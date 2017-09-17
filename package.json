@@ -1,0 +1,19 @@
+{
+   "name": "json-path",
+   "version": "1.0.0",
+   "description": "json数据路径解析",
+   "main": "index.js",
+   "scripts": {
+      "test": "nodemon test.js"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/xiangle/pipelining.git"
+   },
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/xiangle/pipelining/issues"
+   },
+   "homepage": "https://github.com/xiangle/pipelining#readme"
+}
