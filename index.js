@@ -6,24 +6,33 @@
  * @param {String} path 数据路径
  */
 function jsonPath(data, path) {
-   if (data instanceof Object) {
-      if (data instanceof Array) {
-         return new _Array(data)
-      } else {
-         return new _Object(data)
-      }
-   }
+   return new Method(data)
 }
 
 class Method {
    constructor(data) {
       this.data = data
    }
-   get(path) {
-      return
+   get(path, value) {
+      let pathArray = path.split('.')
+      let target = this.data
+      for (let key of pathArray) {
+         if (target[key]) {
+            target = target[key]
+         } else if (key === '$') {
+            for (let itme of target) {
+               itme = 666
+            }
+            break
+         } else {
+            target = undefined
+            break
+         }
+      }
+      return target
    }
    set(path, value) {
-      return
+      return { path, value }
    }
 }
 

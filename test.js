@@ -11,6 +11,8 @@ let product = [
    { uid: 553, b: "pp", c: undefined },
 ]
 
-jsonPath(product).get('a.$.c.s')
+let data = jsonPath(product).get('$.b.s', "age")
 
-jsonPath(product).set('a.$.c.s', 666)
+console.log(data)
+
+// jsonPath(product).set('$.uid', 553)
