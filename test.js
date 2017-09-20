@@ -11,7 +11,10 @@ let product = [
    { uid: 553, b: "pp", c: undefined },
 ]
 
-let data = jsonPath(product).get('$.b.s', "age")
+let data = jsonPath(product).get({
+   '$.b': "age",
+   '$.c': undefined,
+})
 
 console.log(data)
 
