@@ -1,56 +1,79 @@
 "use strict"
 
 /**
- * 导入待处理数据
+ * 构造函数
  * @param {Array|Object} data 导入数据
- * @param {String} path 数据路径
+ * @param {options} path 选项
  */
-function jsonPath(data, path) {
-   return new Method(data)
+function jsonPath(data, options) {
+   for (let key in options) {
+      data = Method[key](data, options[key])
+   }
+   return data
 }
 
-class Method {
-   constructor(data) {
-      this.data = data
-   }
-   path(path) {
-      let pathArray = path.split('.')
-      let target = this.data
-      for (let key of pathArray) {
-         if (target[key]) {
-            target = target[key]
-         } else if (key === '$') {
-            for (let itme of target) {
-               itme = 666
+let Method = {
+   recursion(path) {
+   },
+   filter(data, options) {
+
+      // path解析
+      let optionsArray = []
+      for (let path in options) {
+         optionsArray.push({
+            path: path.split('.'),
+            value: options[path]
+         })
+      }
+
+      // 遍历选项
+      for (let option of optionsArray) {
+
+         let out = []
+         let { path, value } = option
+
+         // 遍历数据（使用for/of会导致内存溢出）
+         for (let key in data) {
+
+            let item = data[key]
+
+            // 遍历path
+            let target = item
+            for (let key of path) {
+
+               if (target[key]) {
+                  target = target[key]
+               } else if (key === '$') {
+                  target = undefined
+                  break
+               } else {
+                  target = undefined
+                  break
+               }
+
             }
-            break
-         } else {
-            target = undefined
-            break
+
+            if (target === value) {
+               out.push(item)
+            }
+
+         }
+
+         data = out
+
+      }
+
+      return data
+   },
+   set(data, assign) {
+
+      for (let item of data) {
+         for (let key in assign) {
+            item[key] = assign[key]
          }
       }
-      return target
-   }
-   get(path, value) {
-      let pathArray = path.split('.')
-      let target = this.data
-      for (let key of pathArray) {
-         if (target[key]) {
-            target = target[key]
-         } else if (key === '$') {
-            for (let itme of target) {
-               itme = 666
-            }
-            break
-         } else {
-            target = undefined
-            break
-         }
-      }
-      return target
-   }
-   set(path, value) {
-      return { path, value }
+
+      return data
    }
 }
 
