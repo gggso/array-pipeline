@@ -33,13 +33,15 @@ let Methods = {
 
             // 遍历pathArray
             let target = item
-            for (let key of pathArray) {
-
-               if (target[key]) {
-                  target = target[key]// 迭代
-               } else if (key === '$') {
+            for (let key in pathArray) {
+               let name = pathArray[key]
+               if (target[name]) {
+                  target = target[name]// 迭代
+               } else if (name === '$') {
                   if (target instanceof Array) {
+                     // for (let i = key; i < pathArray.length, i++) {
 
+                     // }
                   } else {
                      target = undefined
                      break

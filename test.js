@@ -34,10 +34,9 @@ let product = [
    },
 ]
 
+
 let getData = jsonPath(product, {
    filter: {
-      // 'type': 'and',
-      // 'type': 'or',
       'id': 553,
       'b.xx.jj.ss.vv': 888,
    },
