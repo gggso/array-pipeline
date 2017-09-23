@@ -3,25 +3,48 @@
 let jsonPath = require('./index')
 
 let product = [
-   { uid: 11, b: "name" },
-   { uid: 88, b: "name" },
-   { uid: 23, b: "age" },
-   { uid: 342454, b: "age" },
-   { uid: 88, b: "test" },
-   { uid: 553, b: "pp", c: undefined },
+   { id: 11, b: "name" },
+   { id: 88, b: "name" },
+   { id: 23, b: "age" },
+   { id: 342454, b: "age" },
+   { id: 88, b: "test" },
+   {
+      id: 553,
+      b: {
+         xx: {
+            jj: {
+               ss: { vv: 888 }
+            }
+         },
+         xxx: {
+            jj: {
+               ss: {
+                  vv: 666,
+                  vvv: 888,
+               }
+            }
+         }
+      }
+   },
+   {
+      id: 553,
+      b: {
+         kk: [],
+      }
+   },
 ]
-
 
 let getData = jsonPath(product, {
    filter: {
-      'uid': 342454,
-      'b': "age",
+      // 'type': 'and',
+      // 'type': 'or',
+      'id': 553,
+      'b.xx.jj.ss.vv': 888,
    },
    // set: {
    //    'jid': 8888,
    //    'hxs': 484848,
    // }
 })
-
 
 console.log(getData)

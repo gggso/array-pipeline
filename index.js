@@ -6,45 +6,44 @@
  * @param {options} path 选项
  */
 function jsonPath(data, options) {
-   for (let key in options) {
-      data = Method[key](data, options[key])
+   // 遍历选项名称执行对应数据处理方法
+   for (let name in options) {
+      data = Methods[name](data, options[name])
    }
    return data
 }
 
-let Method = {
+let Methods = {
    recursion(path) {
    },
    filter(data, options) {
 
-      // path解析
-      let optionsArray = []
-      for (let path in options) {
-         optionsArray.push({
-            path: path.split('.'),
-            value: options[path]
-         })
-      }
-
       // 遍历选项
-      for (let option of optionsArray) {
+      for (let path in options) {
+
+         let value = options[path]
+         let pathArray = path.split('.')
 
          let out = []
-         let { path, value } = option
 
-         // 遍历数据（使用for/of会导致内存溢出）
+         // 遍历数据（只能使用for/in，for/of会导致内存溢出）
          for (let key in data) {
 
             let item = data[key]
 
-            // 遍历path
+            // 遍历pathArray
             let target = item
-            for (let key of path) {
+            for (let key of pathArray) {
 
                if (target[key]) {
-                  target = target[key]
+                  target = target[key]// 迭代
                } else if (key === '$') {
-                  target = undefined
+                  if (target instanceof Array) {
+
+                  } else {
+                     target = undefined
+                     break
+                  }
                   break
                } else {
                   target = undefined
@@ -59,7 +58,7 @@ let Method = {
 
          }
 
-         data = out
+         data = out// 迭代
 
       }
 
@@ -75,6 +74,46 @@ let Method = {
 
       return data
    }
+}
+
+
+function recursively(data, pathArray) {
+
+   let out = []
+
+   // 遍历数据（使用for/of会导致内存溢出）
+   for (let key in data) {
+
+      let item = data[key]
+
+      // 遍历pathArray
+      let target = item
+      for (let key of pathArray) {
+
+         if (target[key]) {
+            target = target[key]
+         } else if (key === '$') {
+            if (target instanceof Array) {
+
+            } else {
+               target = undefined
+               break
+            }
+            break
+         } else {
+            target = undefined
+            break
+         }
+
+      }
+
+      if (target === value) {
+         out.push(item)
+      }
+
+   }
+
+   return out
 }
 
 module.exports = jsonPath
