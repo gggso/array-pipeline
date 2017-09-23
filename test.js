@@ -28,17 +28,38 @@ let product = [
    },
    {
       id: 553,
-      b: {
-         kk: [],
-      }
+      b: [{
+         kk: [{
+            ss: [{
+               ss: 666,
+            }],
+         }],
+      }],
+      xx: [{
+         kk: [{
+            ss: [{
+               ss: 666,
+            }],
+         }],
+      }]
+   },
+   {
+      id: 553,
+      b: [{
+         kk: [{
+            ss: [{
+               ss: 666,
+            }],
+         }],
+      }],
    },
 ]
 
 
 let getData = jsonPath(product, {
-   filter: {
-      'id': 553,
-      'b.xx.jj.ss.vv': 888,
+   get: {
+      // 'id': 553,
+      'b.$.kk.$.ss.$.ss': 666,
    },
    // set: {
    //    'jid': 8888,
