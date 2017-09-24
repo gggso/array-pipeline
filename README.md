@@ -10,6 +10,8 @@
 
 ## 示例
 
+### 测试数据
+
       let product = [
          { id: 11, b: "name" },
          { id: 88, b: "name" },
@@ -59,6 +61,7 @@
          },
       ]
 
+### 使用对象表达式风格
 
       let test = pipelining(product, {
          filter: {
@@ -95,6 +98,8 @@
       })
 
       console.log(test)
+
+### 使用链式风格
 
       let { data } = pipelining(product)
          .filter({
