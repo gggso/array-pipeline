@@ -145,6 +145,7 @@ class Methods {
       return this
    }
    in(options) {
+
       let outData = []
 
       // 选项预处理
@@ -203,6 +204,9 @@ class Methods {
 
       return this
    }
+   join(options) {
+      
+   }
    set(assign) {
 
       for (let item of this.data) {
@@ -221,7 +225,7 @@ class Methods {
     */
    recursion(data, path, i) {
 
-      // 遍历数据（只能使用for/in，测试for/of动态赋值时会导致内存溢出）
+      // 遍历数据（测试for/of动态赋值时会导致内存溢出）
       for (var item of data) {
 
          // 遍历path

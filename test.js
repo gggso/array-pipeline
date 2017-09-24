@@ -69,10 +69,21 @@ let getData = jsonPath(product, {
       'id': [553, 8881],
       'b.$.kk.$.ss.dd.$.ss': [666, 2323],
    },
+   join: {
+      'data': [],
+      'path': {
+         'b.$.kk.$.ss.dd.$.ss': 'k.$.kk.$.ss.dd.$.ss',
+      },
+   },
    set: {
       'jid': 8888,
       'hxs': 484848,
-   }
+   },
+   sort: {
+      'a.b.$.s': 'DESC',
+      'a.x.$.s': 'DESC'
+   },
+   limit: 12,
 })
 
 console.log(getData)
