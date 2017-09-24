@@ -41,9 +41,11 @@ let product = [
       id: 553,
       b: [{
          kk: [{
-            ss: [{
-               ss: 666,
-            }],
+            ss: {
+               dd: [{
+                  ss: 666,
+               }]
+            },
          }],
       }],
    },
@@ -51,14 +53,26 @@ let product = [
 
 
 let getData = jsonPath(product, {
-   get: {
-      // 'id': 553,
-      'b.$.kk.$.ss.$.ss': 666,
+   filter: {
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
    },
-   // set: {
-   //    'jid': 8888,
-   //    'hxs': 484848,
-   // }
+   // filterAnd: {
+   //    'id': 553,
+   //    'b.$.kk.$.ss.dd.$.ss': 666,
+   // },
+   // filterOr: {
+   //    'id': 553,
+   //    'b.$.kk.$.ss.dd.$.ss': 666,
+   // },
+   // filterOne: {
+   //    'id': 553,
+   //    'b.$.kk.$.ss.dd.$.ss': 666,
+   // },
+   set: {
+      'jid': 8888,
+      'hxs': 484848,
+   }
 })
 
 console.log(getData)
