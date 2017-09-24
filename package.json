@@ -1,7 +1,7 @@
 {
-   "name": "json-path",
+   "name": "pipelining",
    "version": "1.0.0",
-   "description": "json数据路径解析",
+   "description": "json对象处理任务流",
    "main": "index.js",
    "scripts": {
       "test": "nodemon test.js"
