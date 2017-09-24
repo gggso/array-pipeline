@@ -6,7 +6,7 @@
 
     let pipelining = require('json-pipelining')
     
-    let { error, data, $, ... } = pipelining(data, options)
+    let result = pipelining(data, options)
 
 ## 示例
 
