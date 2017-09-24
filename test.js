@@ -57,18 +57,18 @@ let getData = jsonPath(product, {
       'id': 553,
       'b.$.kk.$.ss.dd.$.ss': 666,
    },
-   // filterAnd: {
-   //    'id': 553,
-   //    'b.$.kk.$.ss.dd.$.ss': 666,
-   // },
-   // filterOr: {
-   //    'id': 553,
-   //    'b.$.kk.$.ss.dd.$.ss': 666,
-   // },
-   // filterOne: {
-   //    'id': 553,
-   //    'b.$.kk.$.ss.dd.$.ss': 666,
-   // },
+   and: {
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
+   },
+   or: {
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
+   },
+   in: {
+      'id': [553, 8881],
+      'b.$.kk.$.ss.dd.$.ss': [666, 2323],
+   },
    set: {
       'jid': 8888,
       'hxs': 484848,
@@ -76,3 +76,27 @@ let getData = jsonPath(product, {
 })
 
 console.log(getData)
+
+getData = jsonPath(product)
+   .filter({
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
+   })
+   .and({
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
+   })
+   .or({
+      'id': 553,
+      'b.$.kk.$.ss.dd.$.ss': 666,
+   })
+   .in({
+      'id': [553, 8881],
+      'b.$.kk.$.ss.dd.$.ss': [666, 2323],
+   })
+   .set({
+      'jid': 8888,
+      'hxs': 484848,
+   })
+
+console.log(getData.data)
