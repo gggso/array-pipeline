@@ -88,7 +88,7 @@ let getData = jsonPath(product, {
 
 console.log(getData)
 
-getData = jsonPath(product)
+let { data } = jsonPath(product)
    .filter({
       'id': 553,
       'b.$.kk.$.ss.dd.$.ss': 666,
@@ -110,4 +110,4 @@ getData = jsonPath(product)
       'hxs': 484848,
    })
 
-console.log(getData.data)
+console.log(data)

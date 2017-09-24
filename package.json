@@ -1,5 +1,5 @@
 {
-   "name": "pipelining",
+   "name": "json-pipelining",
    "version": "1.0.0",
    "description": "json对象处理任务流",
    "main": "index.js",
