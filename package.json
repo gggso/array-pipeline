@@ -4,7 +4,7 @@
    "description": "json对象处理任务流",
    "main": "index.js",
    "scripts": {
-      "test": "nodemon test.js"
+      "dev": "nodemon test.js"
    },
    "repository": {
       "type": "git",
