@@ -162,16 +162,21 @@ let b = pipeline(data)
    //    'id': 555,
    //    'hxs': 484848,
    // })
-   // .group('id')
-   // .join(data, { 'id': 'id' })
-   .sort({
-      // 'id': 'DESC',
-      // 'cid': 'DESC',
-      // 'b.*.xx': 'ASE',
-      // 'b.*.kk.*.ss.dd.*.xx': 'ASE',
-      // 'd.*.uu.*.jj.dd.*.ll': 'ASE',
-      // 'b.*.ss': 'ASE',
-      // 'oo.o1': 'DESC'
-   })
+   .group('id')
+   // .join({
+   //    'data': [],
+   //    'path': {
+   //       'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
+   //    }
+   // })
+   // .sort({
+   //    'id': 'DESC',
+   //    'cid': 'DESC',
+   //    // 'b.*.xx': 'ASE',
+   //    // 'b.*.kk.*.ss.dd.*.xx': 'ASE',
+   //    // 'd.*.uu.*.jj.dd.*.ll': 'ASE',
+   //    // 'b.*.ss': 'ASE',
+   //    'oo.o1': 'DESC'
+   // })
 
-console.log(b.data)
+   console.log(b.data)

@@ -24,8 +24,7 @@ function pipeline(data, options) {
 }
 
 /**
- * options预处理
- * 将options对象转为数组类型，分解options中的path为数组
+ * options预处理，将options对象转为数组类型，分解options中的path为数组
  * @param {Object} options 
  */
 function pathToArray(options) {
@@ -268,6 +267,16 @@ class Methods {
       return this
    }
    /**
+    * 合并一个或多个数组
+    * 用于按条件合并两个数组，类似sql数据库的join操作，将两个数组通过公共键合并为一个数组。
+    */
+    join(options = {}) {
+      for (let item of this.data) {
+
+      }
+      return this
+   }
+   /**
     * 分组
     * 按照指定的键对数据进行分组
     */
@@ -296,18 +305,8 @@ class Methods {
 
    }
    /**
-    * 合并
-    * 用于按条件合并两个数组，类似sql数据库的join操作，将两个数组通过公共键合并为一个数组。
-    */
-   join(data, options = {}) {
-      for (let item of this.data) {
-
-      }
-      return this
-   }
-   /**
-    * 赋值
-    * 搜索符合条件的path，执行批量替换操作，如果值不存在时会创建新的key/value
+    * 批量赋值
+    * 搜索符合条件的path，如果值不存在时会创建新的key/value
     */
    set(options = {}) {
 

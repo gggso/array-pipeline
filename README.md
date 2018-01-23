@@ -8,7 +8,7 @@
 
     let pipeline = require('array-pipeline')
    
-    // 使用对象风格
+    // 使用对象表达式风格
     let result = pipeline(data, options)
 
     // 使用函数风格
@@ -109,7 +109,7 @@
          },
       ]
 
-### 使用对象表达式
+### 使用对象表达式风格
 
       let test = pipeline(data, {
          filter: {
@@ -150,7 +150,7 @@
 
       console.log(test)
 
-### 使用链式
+### 使用链式风格
 
       let { data } = pipeline(data)
          .filter({
