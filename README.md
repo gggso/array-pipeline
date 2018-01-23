@@ -6,13 +6,13 @@
 
 > 使用方法同时支持函数和对象声明两种风格
 
-    let pipelining = require('json-pipelining')
+    let pipeline = require('array-pipeline')
    
     // 使用对象风格
-    let result = pipelining(data, options)
+    let result = pipeline(data, options)
 
     // 使用函数风格
-    let { data } = pipelining(data).filter(options)
+    let { data } = pipeline(data).filter(options)
 
 ## 选项或方法
 
@@ -111,7 +111,7 @@
 
 ### 使用对象表达式
 
-      let test = pipelining(data, {
+      let test = pipeline(data, {
          filter: {
             'id': 553,
             'b.*.kk.*.ss.dd.*.ss': 666,
@@ -152,7 +152,7 @@
 
 ### 使用链式
 
-      let { data } = pipelining(data)
+      let { data } = pipeline(data)
          .filter({
             'id': 553,
             'b.*.kk.*.ss.dd.*.ss': 666,
