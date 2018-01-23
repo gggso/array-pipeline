@@ -1,6 +1,6 @@
 ## Installation
 
-      npm install json-pipelining --save
+      npm install array-pipeline  --save
 
 ## 使用
 
