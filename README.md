@@ -114,24 +114,24 @@
       let test = pipelining(data, {
          filter: {
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          },
          and: {
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          },
          or: {
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          },
          in: {
             'id': [553, 8881],
-            'b.$.kk.$.ss.dd.$.ss': [666, 2323],
+            'b.*.kk.*.ss.dd.*.ss': [666, 2323],
          },
          join: {
             'data': [],
             'path': {
-               'b.$.kk.$.ss.dd.$.ss': 'k.$.kk.$.ss.dd.$.ss',
+               'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
             },
          },
          set: {
@@ -155,19 +155,19 @@
       let { data } = pipelining(data)
          .filter({
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          })
          .and({
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          })
          .or({
             'id': 553,
-            'b.$.kk.$.ss.dd.$.ss': 666,
+            'b.*.kk.*.ss.dd.*.ss': 666,
          })
          .in({
             'id': [553, 8881],
-            'b.$.kk.$.ss.dd.$.ss': [666, 2323],
+            'b.*.kk.*.ss.dd.*.ss': [666, 2323],
          })
          .set({
             'jid': 8888,
