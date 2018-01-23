@@ -5,7 +5,7 @@
  * @param {Array|Object} data 导入数组
  * @param {options} path 选项参数
  */
-function pipelining(data, options) {
+function pipeline(data, options) {
    let methods = new Methods(data)
    // 选项模式
    if (options) {
@@ -390,4 +390,4 @@ class Methods {
    }
 }
 
-module.exports = pipelining
+module.exports = pipeline
