@@ -2,12 +2,12 @@
 
 /**
  * 构建方法
- * @param {Array|Object} data 导入数组
+ * @param {Array} data 导入数组
  * @param {options} path 选项参数
  */
 function pipeline(data, options) {
    let methods = new Methods(data)
-   // 选项模式
+   // 对象模式
    if (options) {
       // 遍历选项并执行选项名称对应的方法
       for (let name in options) {
