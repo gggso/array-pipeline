@@ -3,51 +3,34 @@
 let pipelining = require('.')
 
 let data = [
-   { id: 11, b: "name" },
-   { id: 13, b: "name" },
-   { id: 23, b: "age" },
-   { id: 88, b: "test" },
-   {
-      id: 553,
-      b: {
-         xx: {
-            jj: {
-               ss: { vv: 888 }
-            }
-         },
-         xxx: {
-            jj: {
-               ss: {
-                  vv: 666,
-                  vvv: 888,
-               }
-            }
-         }
-      }
-   },
-   {
-      id: 553,
-      b: [{
-         kk: [{
-            ss: [{
-               ss: 666,
-            }],
-         }],
-         jj: 888,
-      }],
-   },
+   // { id: 13, b: "name" },
+   // { id: 11, b: "kk" },
+   // { id: 88, b: "test" },
+   // { id: 13, b: "xxx" },
+   // { id: 23, b: "age" },
+   // { id: 11, b: "name" },
+   // {
+   //    id: 553,
+   //    b: {
+   //       xx: {
+   //          jj: {
+   //             ss: { vv: 888 }
+   //          }
+   //       },
+   //       xxx: {
+   //          jj: {
+   //             ss: {
+   //                vv: 666,
+   //                vvv: 888,
+   //             }
+   //          }
+   //       },
+   //       s: 666
+   //    }
+   // },
    {
       id: 553,
       b: [
-         {
-            jj: [{
-               ss: {
-                  dd: [{
-                     ss: 666,
-                  }]
-               },
-            }],
-         },
          {
             kk: [
                {
@@ -64,17 +47,70 @@ let data = [
                            rr: 666,
                         },
                         {
+                           yy: 666,
+                        }
+                     ]
+                  },
+                  jj: 888
+               }
+            ],
+            xx: 666,
+            ss: 888
+         },
+         {
+            jj: [
+               {
+                  ss: {
+                     dd: [
+                        {
                            ss: 666,
+                        },
+                        {
+                           oo: 888,
                         }
                      ]
                   },
                }
             ],
-         }
+            ss: 666,
+            xx: 88,
+         },
       ],
    },
+   {
+      id: 555,
+      cid: 3,
+      b: [{
+         kk: [{
+            ss: [{
+               ss: 666,
+            }],
+         }],
+         jj: 888,
+         xx: 12
+      }],
+      oo: {
+         o1: 99,
+         o2: 81
+      }
+   },
+   {
+      id: 555,
+      cid: 15,
+      oo: {
+         o1: 34,
+         o2: 56
+      }
+   },
+   {
+      id: 555,
+      cid: 666,
+      oo: {
+         o1: 485,
+         o2: 66
+      }
+   },
 ]
-
 
 // let a = pipelining(data, {
 //    and: {
@@ -112,27 +148,30 @@ let data = [
 let b = pipelining(data)
    // .and({
    //    'id': 553,
-   //    'b.*.kk.*.ss.dd.*.ss': 666,
+   //    'b.*.jj.*.ss.dd.*.ss': 666,
    // })
    // .or({
-   //    'id': 553,
-   //    'b.*.kk.*.ss.dd.*.ss': 666,
+   //    'id': 555,
+   //    'b.*.jj.*.ss.dd.*.ss': 666,
    // })
    // .in({
-   //    'id': [553, 8882321],
-   //    'b.*.kk.*.ss.dd.*.ss': [666, 23231],
+   //    'id': [553, 2321],
+   //    'b.*.jj.*.ss.dd.*.ss': [666, 389],
    // })
-   .group('id')
-   .join(data, { 'id': 'id' })
-// .set({
-//    'jid': 8888,
-//    'hxs': 484848,
-// })
-
+   // .set({
+   //    'id': 555,
+   //    'hxs': 484848,
+   // })
+   // .group('id')
+   // .join(data, { 'id': 'id' })
+   .sort({
+      // 'id': 'DESC',
+      // 'cid': 'DESC',
+      // 'b.*.xx': 'ASE',
+      // 'b.*.kk.*.ss.dd.*.xx': 'ASE',
+      // 'd.*.uu.*.jj.dd.*.ll': 'ASE',
+      // 'b.*.ss': 'ASE',
+      // 'oo.o1': 'DESC'
+   })
 
 console.log(b.data)
-
-
-// let c = pipelining(data).group('id','b.*.kk.*.ss.dd.*.ss')
-
-// console.log(c.data)

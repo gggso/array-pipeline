@@ -2,49 +2,57 @@
 
       npm install json-pipelining --save
 
-## 使用方法
+## 使用
+
+> 使用方法同时支持函数和对象声明两种风格
 
     let pipelining = require('json-pipelining')
-    
+   
+    // 使用对象风格
     let result = pipelining(data, options)
 
-### 选项方法
+    // 使用函数风格
+    let { data } = pipelining(data).filter(options)
 
-> 数据以管道流的方式依次传递，一个方法执行完后，会将处理结果转给下一个方法。"*"号通配符表示未知数组的key
+## 选项或方法
 
-#### filter
+数据以管道流的方式依次传递，一个方法执行完后，会将处理结果转给下一个方法。
+
+路径中的*号表示匹配数组中的所有键，即匹配每个子项，同时也可以通过指定具体的key来精确匹配某个单项。
+
+### filter
 
 > and方法的别名
 
-#### and
+### and
 
 > 提取同时满足所有条件的数据
 
-#### or
+### or
 
 > 提取仅满足一个或多个条件的数据
 
-#### in
+### in
 
 > in相当于在and基础上提供了多值验证。以数组的方式定义多个匹配值，只要命中其中之一，即表示匹配。
 
-#### group
+### group
 
-> 按照指定的键对数据进行分组
+> 按照指定的键路径对数据进行分组，路径中不能包含*号
 
-#### join
+### join
 
 > 用于按条件合并两个数组，类似sql数据库的join操作，将两个数组通过公共键合并为一个数组。
 
-#### set
+### set
 
 > 搜索符合条件的path，执行批量替换操作，如果值不存在时会创建新的key/value
 
-#### sort
+### sort
 
-> 数组排序
+> 数组排序，支持多列排序和嵌套数组排序。多层嵌套数组排序不会改变父级顺序，只是对多个嵌套数组本身的排序
 
-#### limit
+### limit
 
 > 限制返回处理结果数量
 
@@ -52,7 +60,7 @@
 
 ### 测试数据
 
-      let product = [
+      let data = [
          { id: 11, b: "name" },
          { id: 88, b: "name" },
          { id: 23, b: "age" },
@@ -101,9 +109,9 @@
          },
       ]
 
-### 使用对象表达式风格
+### 使用对象表达式
 
-      let test = pipelining(product, {
+      let test = pipelining(data, {
          filter: {
             'id': 553,
             'b.$.kk.$.ss.dd.$.ss': 666,
@@ -131,17 +139,20 @@
             'hxs': 484848,
          },
          sort: {
-            'a.b.$.s': 'DESC',
-            'a.x.$.s': 'DESC'
+            'id': 'DESC',
+            'cid': 'DESC',
+            'b.*.xx': 'ASE',
+            'b.*.kk.*.ss.dd.*.xx': 'ASE',
+            'oo.o1': 'DESC'
          },
          limit: 12,
       })
 
       console.log(test)
 
-### 使用链式风格
+### 使用链式
 
-      let { data } = pipelining(product)
+      let { data } = pipelining(data)
          .filter({
             'id': 553,
             'b.$.kk.$.ss.dd.$.ss': 666,
