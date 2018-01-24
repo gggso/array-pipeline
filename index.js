@@ -57,9 +57,7 @@ function pathGetValue(data, pathArray = [], func) {
          // 精确匹配对象或数组时，使用循环迭代
          let key = pathArray[i]
          let item = iteration[key]
-         if (item instanceof Object) {
-            iteration = item
-         }
+         if (item instanceof Object) { iteration = item }
          // 模糊匹配数组时停止迭代，将剩余子集转交给数组逻辑处理
          else if (key === '*' && iteration instanceof Array) {
             let subPathArray = pathArray.slice(Number(i) + 1)
@@ -270,39 +268,11 @@ class Methods {
     * 合并一个或多个数组
     * 用于按条件合并两个数组，类似sql数据库的join操作，将两个数组通过公共键合并为一个数组。
     */
-    join(options = {}) {
+   join(options = {}) {
       for (let item of this.data) {
 
       }
       return this
-   }
-   /**
-    * 分组
-    * 按照指定的键对数据进行分组
-    */
-   group(path) {
-
-      let dataObj = {}
-      let pathArray = path.split('.')
-      for (let item of this.data) {
-         let pathValue = pathGetValue(item, pathArray)
-         if (pathValue) {
-            if (!dataObj[pathValue]) {
-               dataObj[pathValue] = []
-            }
-            dataObj[pathValue].push(item)
-         }
-      }
-
-      let dataArray = []
-      for (let name in dataObj) {
-         dataArray.push(dataObj[name])
-      }
-
-      this.data = dataArray
-
-      return this
-
    }
    /**
     * 批量赋值
@@ -385,6 +355,36 @@ class Methods {
       }
 
       return this
+
+   }
+   /**
+    * 分组
+    * 按照指定的键对数据进行分组，输出结果将保存为对象，脱离管道流
+    */
+   group(path) {
+
+      let dataObj = {}
+      let pathArray = path.split('.')
+      for (let item of this.data) {
+         let pathValue = pathGetValue(item, pathArray)
+         if (pathValue) {
+            if (!dataObj[pathValue]) {
+               dataObj[pathValue] = []
+            }
+            dataObj[pathValue].push(item)
+         }
+      }
+
+      // let dataArray = []
+      // for (let name in dataObj) {
+      //    dataArray.push(dataObj[name])
+      // }
+
+      // this.data = dataArray
+      
+      // return this
+
+      return dataObj
 
    }
 }

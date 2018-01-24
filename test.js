@@ -179,4 +179,4 @@ let b = pipeline(data)
    //    'oo.o1': 'DESC'
    // })
 
-   console.log(b.data)
+   console.log(b)
