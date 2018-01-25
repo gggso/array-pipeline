@@ -146,37 +146,37 @@ let data = [
 
 
 let b = pipeline(data)
-   // .and({
-   //    'id': 553,
-   //    'b.*.jj.*.ss.dd.*.ss': 666,
-   // })
-   // .or({
-   //    'id': 555,
-   //    'b.*.jj.*.ss.dd.*.ss': 666,
-   // })
-   // .in({
-   //    'id': [553, 2321],
-   //    'b.*.jj.*.ss.dd.*.ss': [666, 389],
-   // })
-   // .set({
-   //    'id': 555,
-   //    'hxs': 484848,
-   // })
-   .group('id')
-   // .join({
-   //    'data': [],
-   //    'path': {
-   //       'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
-   //    }
-   // })
-   // .sort({
-   //    'id': 'DESC',
-   //    'cid': 'DESC',
-   //    // 'b.*.xx': 'ASE',
-   //    // 'b.*.kk.*.ss.dd.*.xx': 'ASE',
-   //    // 'd.*.uu.*.jj.dd.*.ll': 'ASE',
-   //    // 'b.*.ss': 'ASE',
-   //    'oo.o1': 'DESC'
-   // })
+// .and({
+//    'id': 553,
+//    'b.*.jj.*.ss.dd.*.ss': 666,
+// })
+// .or({
+//    'id': 555,
+//    'b.*.jj.*.ss.dd.*.ss': 666,
+// })
+// .in({
+//    'id': [553, 2321],
+//    'b.*.jj.*.ss.dd.*.ss': [666, 389],
+// })
+// .set({
+//    'id': 555,
+//    'hxs': 484848,
+// })
+.group('id')
+// .join({
+//    'data': [],
+//    'path': {
+//       'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
+//    }
+// })
+// .sort({
+//    'id': 'DESC',
+//    'cid': 'DESC',
+//    // 'b.*.xx': 'ASE',
+//    // 'b.*.kk.*.ss.dd.*.xx': 'ASE',
+//    // 'd.*.uu.*.jj.dd.*.ll': 'ASE',
+//    // 'b.*.ss': 'ASE',
+//    'oo.o1': 'DESC'
+// })
 
-   console.log(b)
+console.log(b)

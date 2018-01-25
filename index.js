@@ -380,11 +380,11 @@ class Methods {
       //    dataArray.push(dataObj[name])
       // }
 
-      // this.data = dataArray
-      
+      this.data = dataObj
+
       // return this
 
-      return dataObj
+      return this
 
    }
 }
