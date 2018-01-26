@@ -4,7 +4,7 @@
 
 ## 使用
 
-> 使用方法同时支持函数和对象声明两种风格。
+> 使用方法同时支持函数和对象管道两种风格。
 
 > path中的“*”号通配符表示匹配当前路径下数组中的所有key，即匹配数组中的每个子项，同时也可以通过指定具体的key来精确匹配某个单项。
 
@@ -113,7 +113,7 @@
 
 ### 使用对象表达式风格
 
-      let test = pipeline(data, {
+      let data = pipeline(data, {
          filter: {
             'id': 553,
             'b.*.kk.*.ss.dd.*.ss': 666,
@@ -150,7 +150,7 @@
          limit: 12,
       })
 
-      console.log(test)
+      console.log(data)
 
 ### 使用链式风格
 

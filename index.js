@@ -57,8 +57,10 @@ function pathGetValue(data, pathArray = [], func) {
          // 精确匹配对象或数组时，使用循环迭代
          let key = pathArray[i]
          let item = iteration[key]
-         if (item instanceof Object) { iteration = item }
-         // 模糊匹配数组时停止迭代，将剩余子集转交给数组逻辑处理
+         if (item instanceof Object) {
+            iteration = item
+         }
+         // 模糊匹配数组时停止迭代，将剩余子集转交给数组递归处理逻辑
          else if (key === '*' && iteration instanceof Array) {
             let subPathArray = pathArray.slice(Number(i) + 1)
             if (subPathArray.length) {
@@ -375,14 +377,7 @@ class Methods {
          }
       }
 
-      // let dataArray = []
-      // for (let name in dataObj) {
-      //    dataArray.push(dataObj[name])
-      // }
-
       this.data = dataObj
-
-      // return this
 
       return this
 
