@@ -1,4 +1,4 @@
-## Installation
+## Install
 
       npm install array-pipeline --save
 
@@ -8,13 +8,15 @@
 
 > path中的“*”号通配符表示匹配当前路径下数组中的所有key，即匹配数组中的每个子项，同时也可以通过指定具体的key来精确匹配某个单项。
 
-    let pipeline = require('array-pipeline')
-   
-    // 使用对象表达式风格
-    let result = pipeline(data, options)
+```js
+let pipeline = require('array-pipeline')
 
-    // 使用函数风格
-    let { data } = pipeline(data).filter(options)
+// 使用对象表达式风格
+let result = pipeline(data, options)
+
+// 使用函数风格
+let { data } = pipeline(data).filter(options)
+```
 
 ## 选项或方法
 
@@ -62,119 +64,124 @@
 
 ### 测试数据
 
-      let data = [
-         { id: 11, b: "name" },
-         { id: 88, b: "name" },
-         { id: 23, b: "age" },
-         { id: 342454, b: "age" },
-         { id: 88, b: "test" },
-         {
-            id: 553,
-            b: {
-               xx: {
-                  jj: {
-                     ss: { vv: 888 }
-                  }
-               },
-               xxx: {
-                  jj: {
-                     ss: {
-                        vv: 666,
-                        vvv: 888,
-                     }
-                  }
-               }
+```js
+let data = [
+   { id: 11, b: "name" },
+   { id: 88, b: "name" },
+   { id: 23, b: "age" },
+   { id: 342454, b: "age" },
+   { id: 88, b: "test" },
+   {
+      id: 553,
+      b: {
+         xx: {
+            jj: {
+               ss: { vv: 888 }
             }
          },
-         {
-            id: 553,
-            b: [{
-               kk: [{
-                  ss: [{
-                     ss: 666,
-                  }],
-               }],
-               jj: 888,
+         xxx: {
+            jj: {
+               ss: {
+                  vv: 666,
+                  vvv: 888,
+               }
+            }
+         }
+      }
+   },
+   {
+      id: 553,
+      b: [{
+         kk: [{
+            ss: [{
+               ss: 666,
             }],
-         },
-         {
-            id: 553,
-            b: [{
-               kk: [{
-                  ss: {
-                     dd: [{
-                        ss: 666,
-                     }]
-                  },
-               }],
-            }],
-         },
-      ]
+         }],
+         jj: 888,
+      }],
+   },
+   {
+      id: 553,
+      b: [{
+         kk: [{
+            ss: {
+               dd: [{
+                  ss: 666,
+               }]
+            },
+         }],
+      }],
+   },
+]
+```
 
 ### 使用对象表达式风格
 
-      let data = pipeline(data, {
-         filter: {
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         },
-         and: {
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         },
-         or: {
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         },
-         in: {
-            'id': [553, 8881],
-            'b.*.kk.*.ss.dd.*.ss': [666, 2323],
-         },
-         join: {
-            'data': [],
-            'path': {
-               'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
-            },
-         },
-         set: {
-            'jid': 8888,
-            'hxs': 484848,
-         },
-         sort: {
-            'id': 'DESC',
-            'cid': 'DESC',
-            'b.*.xx': 'ASE',
-            'b.*.kk.*.ss.dd.*.xx': 'ASE',
-            'oo.o1': 'DESC'
-         },
-         limit: 12,
-      })
+```js
+let data = pipeline(data, {
+   filter: {
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   },
+   and: {
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   },
+   or: {
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   },
+   in: {
+      'id': [553, 8881],
+      'b.*.kk.*.ss.dd.*.ss': [666, 2323],
+   },
+   join: {
+      'data': [],
+      'path': {
+         'b.*.kk.*.ss.dd.*.ss': 'k.*.kk.*.ss.dd.*.ss',
+      },
+   },
+   set: {
+      'jid': 8888,
+      'hxs': 484848,
+   },
+   sort: {
+      'id': 'DESC',
+      'cid': 'DESC',
+      'b.*.xx': 'ASE',
+      'b.*.kk.*.ss.dd.*.xx': 'ASE',
+      'oo.o1': 'DESC'
+   },
+   limit: 12,
+})
 
-      console.log(data)
+console.log(data)
+```
 
 ### 使用链式风格
 
-      let { data } = pipeline(data)
-         .filter({
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         })
-         .and({
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         })
-         .or({
-            'id': 553,
-            'b.*.kk.*.ss.dd.*.ss': 666,
-         })
-         .in({
-            'id': [553, 8881],
-            'b.*.kk.*.ss.dd.*.ss': [666, 2323],
-         })
-         .set({
-            'jid': 8888,
-            'hxs': 484848,
-         })
+```js
+let { data } = pipeline(data)
+   .filter({
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   })
+   .and({
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   })
+   .or({
+      'id': 553,
+      'b.*.kk.*.ss.dd.*.ss': 666,
+   })
+   .in({
+      'id': [553, 8881],
+      'b.*.kk.*.ss.dd.*.ss': [666, 2323],
+   })
+   .set({
+      'jid': 8888,
+      'hxs': 484848,
+   })
 
-      console.log(data)
-
+console.log(data)
+```
